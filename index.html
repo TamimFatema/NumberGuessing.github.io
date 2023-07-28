@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Number Guessing Game</title>
+</head>
+
+<body>
+    <h1>Number Guessing Game</h1>
+
+    <script>
+        let low = 1;
+        let high = 10;
+        let correct_ans = Math.floor(Math.random() * (high - low + 1)) + low;
+        let chances = 3;
+
+        function startGame() {
+            for (let i = 0; i < chances; i++) {
+                let userGuess = parseInt(prompt(`Guess a number between ${low} and ${high}. You have ${chances - i} chances left:`));
+
+                if (isNaN(userGuess) || userGuess < low || userGuess > high) {
+                    alert('Please enter a valid number within the range.');
+                } else if (userGuess === correct_ans) {
+                    alert('Congratulations! You guessed the correct number!');
+                    break;
+                } else if (userGuess < correct_ans) {
+                    alert('Correct answer is greater!');
+                } else {
+                    alert('Correct answer is smaller!');
+                }
+
+                if (i === chances - 1) {
+                    alert(`Sorry, you lose! The correct number was ${correct_ans}.`);
+                }
+            }
+        }
+
+        startGame();
+    </script>
+</body>
+
+</html>
